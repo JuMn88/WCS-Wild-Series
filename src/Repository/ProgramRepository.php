@@ -22,11 +22,12 @@ class ProgramRepository extends ServiceEntityRepository
     /**
     * @return Program[] Returns an array of Program objects
     */
-
-    public function findByCategory($categoryName)
+    
+    public function findLast3ByCategory($categoryName)
     {
         return $this->createQueryBuilder('p')
-            ->andWhere('p.category = :categoryName')
+            ->join('p.category', 'c')
+            ->where('c.name = :categoryName')
             ->setParameter('categoryName', $categoryName)
             ->orderBy('p.id', 'DESC')
             ->setMaxResults(3)
