@@ -1,12 +1,11 @@
+$primary : #0A3D62;
+$secondary: #38ADA9;
+$light: #F0FFFE;
+$grey: #C2C9C9;
+
 @import "~bootstrap/scss/bootstrap";
 
 body {
-  background-color: #F0FFFE;
+  background-color: $primary;
 }
 
-$theme-colors: (
-  "primary": #0A3D62,
-  "secondary": #38ADA9,
-  "light": #F0FFFE,
-  "grey": #C2C9C9,
-);
