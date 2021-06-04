@@ -3,6 +3,8 @@
 namespace App\Controller;
 
 use App\Entity\Program;
+use App\Entity\Season;
+use App\Entity\Episode;
 use App\Repository\ProgramRepository;
 use App\Repository\SeasonRepository;
 use App\Repository\EpisodeRepository;
@@ -33,22 +35,14 @@ class ProgramController extends AbstractController
         ]);
     }
     /**
-     * Getting a program by id
+     * Getting a program by id and its seasons
      * 
      * @Route("/show/{id<^[0-9]+$>}", name="show")
      * @return Response
      */
-    public function show(int $id, ProgramRepository $programRepository, SeasonRepository $seasonRepository): Response
+    public function show(Program $program, SeasonRepository $seasonRepository): Response
     {
-        $program = $programRepository->findOneBy(['id' => $id]);
-
-        if (!$program) {
-            throw $this->createNotFoundException(
-                'No program with id : '.$id.' found in program\'s table.'
-            );
-        }
-        
-        $seasons = $seasonRepository->findByProgram($id);
+        $seasons = $seasonRepository->findByProgram($program->getId());
 
         return $this->render('program/show.html.twig', [
             'program' => $program,
@@ -56,37 +50,21 @@ class ProgramController extends AbstractController
         ]);
     }
     /**
-     * Getting a program by id
+     * Getting a season of a program by id and its episodes
      * 
-     * @Route("/{programId<^[0-9]+$>}/seasons/{seasonId<^[0-9]+$>}", name="season_show")
+     * @Route("/{program<^[0-9]+$>}/seasons/{season<^[0-9]+$>}", name="season_show")
      * @return Response
      */
     public function showSeason(
-        int $programId, 
-        int $seasonId, 
-        ProgramRepository $programRepository, 
-        SeasonRepository $seasonRepository,
+        Program $program, 
+        Season $season,
         EpisodeRepository $episodeRepository
         )
     {
-        $program = $programRepository->findOneById($programId);
-        if (!$program) {
-            throw $this->createNotFoundException(
-                'No program with id : '.$programId.' found in program\'s table.'
-            );
-        }
-
-        $season = $seasonRepository->findOneById($seasonId);
-        if (!$season) {
-            throw $this->createNotFoundException(
-                'No program with id : '.$seasonId.' found in program\'s table.'
-            );
-        }
-
-        $episodes = $episodeRepository->findBySeason($seasonId);
+        $episodes = $episodeRepository->findBySeason($season->getId());
         if (!$episodes) {
             throw $this->createNotFoundException(
-                'No episode with season id : '.$seasonId.' found in program\'s table.'
+                'No episode with season id : '.$season->getId().' found in program\'s table.'
             );
         }
 
@@ -94,6 +72,24 @@ class ProgramController extends AbstractController
             'program' => $program,
             'season' => $season,
             'episodes' => $episodes
+        ]);
+    }
+    /**
+     * Getting an episode by id of a program
+     * 
+     * @Route("/{program<^[0-9]+$>}/seasons/{season<^[0-9]+$>}/episodes/{episode<^[0-9]+$>}", name="episode_show")
+     * @return Response
+     */
+    public function showEpisode(
+        Program $program, 
+        Season $season,
+        Episode $episode
+        )
+    {
+        return $this->render('program/episode_show.html.twig', [
+            'program' => $program,
+            'season' => $season,
+            'episode' => $episode
         ]);
     }
 }
