@@ -3,11 +3,12 @@
 {% block title %}Add a category{% endblock %}
 
 {% block body %}
-    {{ form_start(form) }}
-    {{ form_widget(form) }}
-    <input type='submit' value='Add category'>
-    {{ form_end(form) }}
-
+    <div class="mt-3">
+        {{ form_start(form) }}
+        {{ form_widget(form) }}
+        <input class="mt-3 btn btn-secondary" type='submit' value='Ajouter une catégorie'>
+        {{ form_end(form) }}
+    </div>
     <a class="mt-3 btn btn-primary" href="{{ path('category_index') }}">
         Retour
     </a>

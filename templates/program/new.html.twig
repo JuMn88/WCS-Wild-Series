@@ -3,11 +3,12 @@
 {% block title %}Add a program{% endblock %}
 
 {% block body %}
-    {{ form_start(form) }}
-    {{ form_widget(form) }}
-    <input type='submit' value='Add program'>
-    {{ form_end(form) }}
-
+    <div class="mt-3">
+        {{ form_start(form) }}
+        {{ form_widget(form) }}
+        <input class="mt-3 btn btn-secondary" type='submit' value='Ajouter un programme'>
+        {{ form_end(form) }}
+    </div>
     <a class="mt-3 btn btn-primary" href="{{ path('program_index') }}">
         Retour
     </a>
