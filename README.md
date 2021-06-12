@@ -16,3 +16,5 @@ Quest 14: Validation - https://www.loom.com/share/f89ff4b2a8344baaae3fa73a19069d
 Quest 15: Many-To-Many - https://www.loom.com/share/ecd123ffca614dbca37676a5bd23a9a9
 
 Quest 16: EntityType - https://www.loom.com/share/8511e375c7964fd4befb1c21e9766c86
+
+Quest 17: Fixtures avancées - https://www.loom.com/share/65f1ab4707034562a478d93d51d728d9
