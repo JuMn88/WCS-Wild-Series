@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Program;
 use App\Entity\Season;
 use App\Entity\Episode;
+use App\Service\Slugify;
 use App\Form\ProgramType;
 use App\Repository\SeasonRepository;
 use App\Repository\EpisodeRepository;
@@ -12,6 +13,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Request;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 
 /**
 * @Route("/programs", name="program_")
@@ -41,7 +43,7 @@ class ProgramController extends AbstractController
      *
      * @Route("/new", name="new")
      */
-    public function new(Request $request) : Response
+    public function new(Request $request, Slugify $slugify) : Response
     {
         // Create a new Program Object
         $program = new Program();
@@ -54,6 +56,9 @@ class ProgramController extends AbstractController
             // Deal with the submitted data
             // Get the Entity Manager
             $entityManager = $this->getDoctrine()->getManager();
+            //Generating the program's slug from its title
+            $slug = $slugify->generate($program->getTitle());
+            $program->setSlug($slug);
             // Persist Category Object
             $entityManager->persist($program);
             // Flush the persisted object
@@ -69,12 +74,20 @@ class ProgramController extends AbstractController
     /**
      * Getting a program by id and its seasons
      * 
-     * @Route("/show/{id<^[0-9]+$>}", name="show")
+     * @Route("/{slug}", name="show")
      * @return Response
      */
-    public function show(Program $program, SeasonRepository $seasonRepository): Response
+    public function show(Program $program, SeasonRepository $seasonRepository, Slugify $slugify): Response
     {
         $seasons = $seasonRepository->findByProgram($program->getId());
+        
+        $slug = $program->getSlug();
+
+        if (!$program) {
+            throw $this->createNotFoundException(
+                'No program with id : '. $program->getId() .' found in program\'s table.'
+            );
+        }
 
         return $this->render('program/show.html.twig', [
             'program' => $program,
@@ -84,7 +97,7 @@ class ProgramController extends AbstractController
     /**
      * Getting a season of a program by id and its episodes
      * 
-     * @Route("/{program<^[0-9]+$>}/seasons/{season<^[0-9]+$>}", name="season_show")
+     * @Route("/{slug}/seasons/{season<^[0-9]+$>}", name="season_show")
      * @return Response
      */
     public function showSeason(
@@ -107,9 +120,11 @@ class ProgramController extends AbstractController
         ]);
     }
     /**
-     * Getting an episode by id of a program
+     * Getting an episode by slug of a program
      * 
-     * @Route("/{program<^[0-9]+$>}/seasons/{season<^[0-9]+$>}/episodes/{episode<^[0-9]+$>}", name="episode_show")
+     * @Route("/{programSlug}/seasons/{season<^[0-9]+$>}/episodes/{episodeSlug}", name="episode_show")
+     * @ParamConverter("program", class="App\Entity\Program", options={"mapping": {"programSlug": "slug"}})
+     * @ParamConverter("episode", class="App\Entity\Episode", options={"mapping": {"episodeSlug": "slug"}})
      * @return Response
      */
     public function showEpisode(
