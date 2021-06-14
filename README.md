@@ -18,3 +18,5 @@ Quest 15: Many-To-Many - https://www.loom.com/share/ecd123ffca614dbca37676a5bd23
 Quest 16: EntityType - https://www.loom.com/share/8511e375c7964fd4befb1c21e9766c86
 
 Quest 17: Fixtures avancées - https://www.loom.com/share/65f1ab4707034562a478d93d51d728d9
+
+Quest 18: Services - https://www.loom.com/share/af42102fd3c3446382637cf53c0d8574
