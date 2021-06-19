@@ -1,0 +1,13 @@
+{% extends '/email/layoutEmail.html.twig' %}
+
+{% block title %}
+    {{ parent() }} - Nouvelle série
+{% endblock %}
+
+{% block body %}
+    <h1>Nouvel série {{ program.title }} ajoutée !</h1>
+    <p>Bonjour, une nouvelle série {{ program.title }} a été ajoutée sur Wild Séries !</p>
+    <p>Résumé : {{ program.summary }}</p>
+    <img src="{{ program.poster }}" alt="Affiche de la série {{ program.title }}" style="height:300px; width:auto">
+    <a href="localhost:8000/programs/{{ program.slug }}">Aller voir</a>
+{% endblock %}

@@ -3,6 +3,7 @@
 namespace App\DataFixtures;
 
 use App\Entity\Episode;
+use App\Service\Slugify;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Doctrine\Persistence\ObjectManager;
@@ -19,7 +20,7 @@ class EpisodeFixtures extends Fixture implements DependentFixtureInterface
         [
             'title' => 'Rick et les antivax',
             'number' => 2,
-            'summary' => 'Rick a maille à se défaire des nombreux antivax tombés malades (ils sont agressifs et ont le teint peu naturel.',
+            'summary' => 'Rick a maille à se défaire des nombreux antivax tombés malades (ils sont agressifs et ont le teint peu naturel).',
             'season' => 'season_0'
         ],
         [
@@ -35,13 +36,20 @@ class EpisodeFixtures extends Fixture implements DependentFixtureInterface
             'season' => 'season_0'
         ],
         [
-            'title' => 'Rick et le boudin noir.',
+            'title' => 'Rick et le boudin noir',
             'number' => 5,
-            'summary' => 'Rick découvre qu\'il peut se camoufler des antivax en s\'enroulant dans du boudin noir. Il se rend con dans une boucherie-charcuterie.',
+            'summary' => 'Rick découvre qu\'il peut se camoufler des antivax en s\'enroulant dans du boudin noir. Il se rend donc dans une boucherie-charcuterie.',
             'season' => 'season_0'
         ],
     ];
     
+    private Slugify $slugify;
+
+    public function __construct(Slugify $slugify)
+    {
+        $this->slugify = $slugify;
+    }
+
     public function load(ObjectManager $manager)
     {
         foreach (self::EPISODES as $key => $episodeInfo) {
@@ -50,6 +58,7 @@ class EpisodeFixtures extends Fixture implements DependentFixtureInterface
             $episode->setNumber($episodeInfo['number']);
             $episode->setSummary($episodeInfo['summary']);
             $episode->setSeason($this->getReference($episodeInfo['season']));
+            $episode->setSlug($this->slugify->generate($episode->getTitle()));
             
             $manager->persist($episode);
         }

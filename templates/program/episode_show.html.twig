@@ -11,12 +11,12 @@
         </div>
     </div>
     <p>
-        <a href="{{ path("program_season_show", { program: program.id , season: season.id }) }}">
+        <a href="{{ path('program_season_show', { slug: program.slug , season: season.id }) }}">
             Retour à la saison {{ season.number }}
         </a>
     </p>
     <p>
-        <a href="{{ path("program_show", { id: program.id }) }}">
+        <a href="{{ path('program_show', { slug: program.slug }) }}">
             Retour à la série {{ program.title }}
         </a>
     </p>

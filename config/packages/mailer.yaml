@@ -1,7 +1,4 @@
 framework:
     mailer:
         dsn: '%env(MAILER_DSN)%'
-        envelope:
-            sender: 'julien-moineau_student2021@wilder.school'
-            recipients: ['moineau.julien@hotmail.fr']
 
