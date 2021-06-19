@@ -1,4 +1,4 @@
 # WCS-Wild-Series
 WCS quests to learn Symfony
 
-Quest 18: Services - (replacing every ID in the url by slugs) https://www.loom.com/share/af42102fd3c3446382637cf53c0d8574
+Quest 19: E-mail - (automatic emailing for program and episode creation) https://www.loom.com/share/599fb077c82945a0a17abca23a63939c
