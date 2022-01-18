@@ -25,10 +25,10 @@
             </tr>
         </tbody>
     </table>
-
-    <a href="{{ path('episode_index') }}">back to list</a>
-
-    <a href="{{ path('episode_edit', {slug: episode.slug}) }}">edit</a>
-
+    {% if app.user %}
+      <a class="btn btn-secondary mt-3" href="{{ path('episode_comment', {slug: episode.slug}) }}">Commenter</a>
+    {% endif %}
+    <a class="btn btn-secondary mt-3" href="{{ path('episode_edit', {slug: episode.slug}) }}">Editer</a>
     {{ include('episode/_delete_form.html.twig') }}
+    <a class="btn btn-primary" href="{{ path('episode_index') }}">Retour</a>
 {% endblock %}

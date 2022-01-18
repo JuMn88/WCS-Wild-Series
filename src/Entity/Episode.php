@@ -4,6 +4,9 @@ namespace App\Entity;
 
 use App\Repository\EpisodeRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=EpisodeRepository::class)
@@ -19,16 +22,22 @@ class Episode
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank()
+     * @Assert\Length(max="255", maxMessage="Le titre saisi {{ value }} est trop long, il ne devrait pas dépasser {{ limit }} caractères")
      */
     private $title;
 
     /**
      * @ORM\Column(type="integer")
+     * @Assert\NotBlank()
+     * @Assert\Type(type="integer", message="La valeur saisie {{ value }} n'est pas un nombre entier")
+     * @Assert\Positive(message="Le numéro saisi {{ value }} doit être positif")
      */
     private $number;
 
     /**
-     * @ORM\Column(type="text")
+     * @ORM\Column(type="text", nullable=true)
+     * @Assert\NotBlank()
      */
     private $summary;
 
@@ -42,6 +51,11 @@ class Episode
      * @ORM\Column(type="string", length=255)
      */
     private $slug;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Comment::class, mappedBy="episode", orphanRemoval=true)
+     */
+    private $comments;
 
     public function getId(): ?int
     {
@@ -104,6 +118,36 @@ class Episode
     public function setSlug(string $slug): self
     {
         $this->slug = $slug;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Comment[]
+     */
+    public function getComments(): Collection
+    {
+        return $this->comments;
+    }
+
+    public function addComment(Comment $comment): self
+    {
+        if (!$this->comments->contains($comment)) {
+            $this->comments[] = $comment;
+            $comment->setEpisode($this);
+        }
+
+        return $this;
+    }
+
+    public function removeComment(Comment $comment): self
+    {
+        if ($this->comments->removeElement($comment)) {
+            // set the owning side to null (unless already changed)
+            if ($comment->getEpisode() === $this) {
+                $comment->setEpisode(null);
+            }
+        }
 
         return $this;
     }

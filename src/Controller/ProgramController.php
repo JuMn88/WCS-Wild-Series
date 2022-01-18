@@ -2,19 +2,21 @@
 // src/Controller/ProgramController.php
 namespace App\Controller;
 
-use App\Entity\Program;
 use App\Entity\Season;
+use App\Entity\Comment;
 use App\Entity\Episode;
+use App\Entity\Program;
 use App\Service\Slugify;
+use App\Form\CommentType;
 use App\Form\ProgramType;
+use Symfony\Component\Mime\Email;
 use App\Repository\SeasonRepository;
 use App\Repository\EpisodeRepository;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Mailer\MailerInterface;
-use Symfony\Component\Mime\Email;
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 
 /**
@@ -131,7 +133,7 @@ class ProgramController extends AbstractController
     /**
      * Getting an episode by slug of a program
      * 
-     * @Route("/{programSlug}/seasons/{season<^[0-9]+$>}/episodes/{episodeSlug}", name="episode_show")
+     * @Route("/{programSlug<^[a-zA-Z0-9 \'-]+$>}/seasons/{season<^[0-9]+$>}/episodes/{episodeSlug<^[a-zA-Z0-9 \'-]+$>}", name="episode_show")
      * @ParamConverter("program", class="App\Entity\Program", options={"mapping": {"programSlug": "slug"}})
      * @ParamConverter("episode", class="App\Entity\Episode", options={"mapping": {"episodeSlug": "slug"}})
      * @return Response
@@ -139,13 +141,52 @@ class ProgramController extends AbstractController
     public function showEpisode(
         Program $program, 
         Season $season,
-        Episode $episode
+        Episode $episode,
+        Request $request
         )
     {
+        if (!$program) {
+            throw $this->createNotFoundException(
+                'No program with given id found in program\'s table.'
+            );
+        }
+        if (!$season) {
+            throw $this->createNotFoundException(
+                'No season with given id found in season\'s table.'
+            );
+        }
+        if (!$episode) {
+            throw $this->createNotFoundException(
+                'No episode with given id found in season\'s table.'
+            );
+        }
+
+        $comment = new Comment();
+        $form = $this->createForm(CommentType::class, $comment);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $entityManager = $this->getDoctrine()->getManager();
+            $comment->setEpisode($episode);
+            $comment->setAuthor($this->getUser());
+            $entityManager->persist($comment);
+            $entityManager->flush();
+
+            return $this->redirectToRoute('program_episode_show', [
+                    'programSlug' => $program->getSlug(),
+                    'season' => $season->getId(),
+                    'episodeSlug' => $episode->getSlug(),
+                ],
+                Response::HTTP_SEE_OTHER
+            );
+        }
+
         return $this->render('program/episode_show.html.twig', [
             'program' => $program,
             'season' => $season,
-            'episode' => $episode
+            'episode' => $episode,
+            'comment' => $comment,
+            'form' => $form->createView(),
         ]);
     }
 }

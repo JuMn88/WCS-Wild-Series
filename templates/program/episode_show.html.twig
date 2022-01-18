@@ -1,12 +1,15 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}{{ program.title }} - Saison {{ season.number }} - Episode {{ episode.number }}{% endblock %}
+{% block title %}
+    {{ program.title }} - S{{ season.number }}E{{ episode.number }} : {{ episode.title }}
+{% endblock %}
 
 {% block body %}
+<section class="container mt-4">
     <div class="media">
         <div class="media-body">
             <h1 class="mt-0">{{ program.title }} : Saison {{ season.number }} Episode {{ episode.number }}</h1>
-            <p>Titre : {{ episode.title }}</p>
+            <h2>{{ episode.title }}</h2>
             <p>Synopsis : {{ episode.summary }}</p>
         </div>
     </div>
@@ -25,4 +28,31 @@
             Retour à la liste des programmes
         </a>
     </p>
+</section>
+<section class="container mt-4">
+        <h2>Commentaires : </h2>
+        <table class="table table-striped table-hover">
+            {% for comment in episode.comments %}
+                <tr>
+                    <td class="col-2">
+                        Note : {{ comment.rate }}
+                    </td>
+                    <td class="col-8">
+                        {{ comment.comment }}
+                    </td>
+                    <td class="col-2">
+                        Auteur : {{ comment.author.username }}
+                    </td>
+                </tr>
+            {% else %}
+                Aucun commentaire trouvé.
+            {% endfor %}
+        </table>
+</section>
+    {% if app.user %}
+<section class="container mt-4">
+        <h2>Ajouter un commentaire : </h2>
+        {{ include('/program/_commentForm.html.twig') }}
+</section>
+    {% endif %}
 {% endblock %}
