@@ -43,6 +43,12 @@
                     <td class="col-2">
                         Auteur : {{ comment.author.username }}
                     </td>
+                    {% if is_granted("ROLE_ADMIN") or app.user is same as(comment.author)  %}
+                        <td class="col-2">
+                            {# <a href="{{ path('comment_delete', { commentId: comment.id }) }}">Supprimer</a> #}
+                            {{ include('/comment/_delete_form.html.twig') }}
+                        </td>
+                    {% endif %}
                 </tr>
             {% else %}
                 Aucun commentaire trouvé.
@@ -52,7 +58,7 @@
     {% if app.user %}
 <section class="container mt-4">
         <h2>Ajouter un commentaire : </h2>
-        {{ include('/program/_commentForm.html.twig') }}
+        {{ include('/comment/_form.html.twig') }}
 </section>
     {% endif %}
 {% endblock %}

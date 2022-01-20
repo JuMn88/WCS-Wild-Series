@@ -10,6 +10,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Request;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 
 /**
 * @Route("/categories", name="category_")
@@ -38,6 +39,7 @@ class CategoryController extends AbstractController
      * Display the form or deal with it
      *
      * @Route("/new", name="new")
+     * @Security("is_granted('ROLE_ADMIN')")
      */
     public function new(Request $request) : Response
     {

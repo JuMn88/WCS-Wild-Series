@@ -17,7 +17,8 @@ class ProgramFixtures extends Fixture implements DependentFixtureInterface
             'poster' => 'https://m.media-amazon.com/images/M/MV5BZmFlMTA0MmUtNWVmOC00ZmE1LWFmMDYtZTJhYjJhNGVjYTU5XkEyXkFqcGdeQXVyMTAzMDM4MjM0._V1_.jpg',
             'category' => 'category_4',
             'country' => 'US',
-            'year' => 2010
+            'year' => 2010,
+            'owner' => 'admin',
         ],
         [
             'title' => 'The Haunting Of Hill House',
@@ -25,7 +26,8 @@ class ProgramFixtures extends Fixture implements DependentFixtureInterface
             'poster' => 'https://m.media-amazon.com/images/M/MV5BMTU4NzA4MDEwNF5BMl5BanBnXkFtZTgwMTQxODYzNjM@._V1_SY1000_CR0,0,674,1000_AL_.jpg',
             'category' => 'category_4',
             'country' => 'US',
-            'year' => 2018
+            'year' => 2018,
+            'owner' => 'contributor',
         ],
         [
             'title' => 'American Horror Story',
@@ -33,7 +35,8 @@ class ProgramFixtures extends Fixture implements DependentFixtureInterface
             'poster' => 'https://m.media-amazon.com/images/M/MV5BODZlYzc2ODYtYmQyZS00ZTM4LTk4ZDQtMTMyZDdhMDgzZTU0XkEyXkFqcGdeQXVyMzQ2MDI5NjU@._V1_SY1000_CR0,0,666,1000_AL_.jpg',
             'category' => 'category_4',
             'country' => 'US',
-            'year' => 2011
+            'year' => 2011,
+            'owner' => 'contributor',
         ],
         [
             'title' => 'Love Death And Robots',
@@ -41,7 +44,8 @@ class ProgramFixtures extends Fixture implements DependentFixtureInterface
             'poster' => 'https://m.media-amazon.com/images/M/MV5BMTc1MjIyNDI3Nl5BMl5BanBnXkFtZTgwMjQ1OTI0NzM@._V1_SY1000_CR0,0,674,1000_AL_.jpg',
             'category' => 'category_4',
             'country' => 'US',
-            'year' => 2019
+            'year' => 2019,
+            'owner' => 'contributor',
         ],
         [
             'title' => 'Penny Dreadful',
@@ -49,7 +53,8 @@ class ProgramFixtures extends Fixture implements DependentFixtureInterface
             'poster' => 'https://m.media-amazon.com/images/M/MV5BNmE5MDE0ZmMtY2I5Mi00Y2RjLWJlYjMtODkxODQ5OWY1ODdkXkEyXkFqcGdeQXVyNjU2NjA5NjM@._V1_SY1000_CR0,0,695,1000_AL_.jpg',
             'category' => 'category_4',
             'country' => 'UK',
-            'year' => 2014
+            'year' => 2014,
+            'owner' => 'contributor',
         ],
         [
             'title' => 'Fear The Walking Dead',
@@ -57,7 +62,8 @@ class ProgramFixtures extends Fixture implements DependentFixtureInterface
             'poster' => 'https://m.media-amazon.com/images/M/MV5BYWNmY2Y1NTgtYTExMS00NGUxLWIxYWQtMjU4MjNkZjZlZjQ3XkEyXkFqcGdeQXVyMzQ2MDI5NjU@._V1_SY1000_CR0,0,666,1000_AL_.jpg',
             'category' => 'category_4',
             'country' => 'US',
-            'year' => 2015
+            'year' => 2015,
+            'owner' => 'admin',
         ],
         [
             'title' => 'The Mandalorian',
@@ -65,7 +71,8 @@ class ProgramFixtures extends Fixture implements DependentFixtureInterface
             'poster' => 'https://www.ecranlarge.com/uploads/image/001/095/the-mandalorian-affiche-us-1095281.jpg',
             'category' => 'category_1',
             'country' => 'US',
-            'year' => 2019
+            'year' => 2019,
+            'owner' => 'contributor',
         ],
         [
             'title' => 'Rome',
@@ -73,7 +80,8 @@ class ProgramFixtures extends Fixture implements DependentFixtureInterface
             'poster' => 'https://fr.web.img6.acsta.net/pictures/21/02/11/14/02/1978083.jpg',
             'category' => 'category_9',
             'country' => 'UK',
-            'year' => 2006
+            'year' => 2006,
+            'owner' => 'contributor',
         ],
     ];
 
@@ -96,6 +104,7 @@ class ProgramFixtures extends Fixture implements DependentFixtureInterface
             $program->setCountry($programInfo['country']);
             $program->setYear($programInfo['year']);
             $program->setSlug($this->slugify->generate($program->getTitle()));
+            $program->setOwner($this->getReference($programInfo['owner']));
 
             for ($i=0; $i < count(ActorFixtures::ACTORS); $i++) {
                 $program->addActor($this->getReference('actor_' . $i));
