@@ -81,7 +81,7 @@ class SecurityController extends AbstractController
                     ->from(new Address($this->getParameter('mailer_from'), 'Wild Séries'))
                     ->to($user->getEmail())
                     ->subject('Merci de confirmer votre adresse email')
-                    ->htmlTemplate('registration/confirmation_email.html.twig')
+                    ->htmlTemplate('security/confirmation_email.html.twig')
             );
             // do anything else you need here, like send an email
 
@@ -93,7 +93,7 @@ class SecurityController extends AbstractController
             );
         }
 
-        return $this->render('registration/register.html.twig', [
+        return $this->render('security/register.html.twig', [
             'registrationForm' => $form->createView(),
         ]);
     }
