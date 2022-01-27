@@ -26,3 +26,5 @@ Quest 19: E-mail - https://www.loom.com/share/599fb077c82945a0a17abca23a63939c
 Quest 20: Users
 
 Quest 21: Access control
+
+Quest 22: Registration
