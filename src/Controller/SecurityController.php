@@ -16,6 +16,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use SymfonyCasts\Bundle\VerifyEmail\Exception\VerifyEmailExceptionInterface;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 
 class SecurityController extends AbstractController
 {
@@ -118,5 +119,14 @@ class SecurityController extends AbstractController
         $this->addFlash('success', 'Your email address has been verified.');
 
         return $this->redirectToRoute('app_register');
+    }
+
+    /**
+     * @Route("/my-profile", name="app_profile")
+     * @Security("is_granted('ROLE_CONTRIBUTOR')")
+     */
+    public function profile(): Response
+    {
+        return $this->render('security/profile.html.twig');
     }
 }

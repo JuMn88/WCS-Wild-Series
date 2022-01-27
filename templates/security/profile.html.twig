@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mon Profil{% endblock %}
+
+{% block body %}
+    <h2>Mon profil :</h2>
+    <div class='container border border-light rounded shadow-lg mt-sm-5 px-sm-5 px-4'>
+        <table class="table table-borderless table-hover">
+            <tbody>
+                <tr>
+                    <th>Pseudonyme :</th>
+                    <th>{{ app.user.username }}</th>
+                </tr>
+                <tr>
+                    <th>Adresse mail :</th>
+                    <th>{{ app.user.email }}</th>
+                </tr>
+                <tr>
+                    <th>Bio :</th>
+                    <th>{{ app.user.bio }}</th>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+{% endblock %}
