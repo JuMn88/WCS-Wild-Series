@@ -50,7 +50,7 @@ class ProgramController extends AbstractController
                 ->getRepository(Program::class)
                 ->findAll();
         }
-        dd($programs);
+        
         return $this->render(
             'program/index.html.twig', [
             'programs' => $programs,
