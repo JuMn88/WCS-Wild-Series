@@ -43,12 +43,10 @@ class ProgramController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             //Select only the programs with the right title
             $search = $form->getData()['search'];
-            $programs = $programRepository->findByTitle($search);
+            $programs = $programRepository->findLikeName($search);
         } else {
             //Select every program
-            $programs = $this->getDoctrine()
-                ->getRepository(Program::class)
-                ->findAll();
+            $programs = $programRepository->findAll();
         }
         
         return $this->render(
