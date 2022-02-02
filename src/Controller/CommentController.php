@@ -35,6 +35,8 @@ class CommentController extends AbstractController
             $entityManager->persist($comment);
             $entityManager->flush();
 
+            $this->addFlash('success', 'Votre commentaire a été posté !');
+
             return $this->redirectToRoute('program_episode_show', [
                 'programSlug' => $episode->getSeason()->getProgram()->getSlug(),
                 'season' => $episode->getSeason()->getId(),

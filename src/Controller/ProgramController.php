@@ -89,7 +89,7 @@ class ProgramController extends AbstractController
             $entityManager->flush();
 
             // Once the form is submitted, valid and the data inserted in database, you can define the success flash message
-            $this->addFlash('success', 'Le nouveau programme a été ajouté !');
+            $this->addFlash('success', 'Cette série a été ajoutée !');
 
             //Sending an email
             $email = (new Email())
@@ -220,7 +220,7 @@ class ProgramController extends AbstractController
             $this->getDoctrine()->getManager()->flush();
 
             // Once the form is submitted, valid and the data inserted in database, you can define the success flash message
-            $this->addFlash('success', 'Le programme a été correctement édité !');
+            $this->addFlash('success', 'Cette série a été correctement éditée !');
 
             return $this->redirectToRoute('program_index');
         }
