@@ -219,6 +219,9 @@ class ProgramController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
+            // Once the form is submitted, valid and the data inserted in database, you can define the success flash message
+            $this->addFlash('success', 'Le programme a été correctement édité !');
+
             return $this->redirectToRoute('program_index');
         }
 

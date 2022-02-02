@@ -12,12 +12,12 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/actors")
+ * @Route("/actors", name="actor_")
  */
 class ActorController extends AbstractController
 {
     /**
-     * @Route("/", name="actor_index", methods={"GET"})
+     * @Route("/", name="index", methods={"GET"})
      */
     public function index(ActorRepository $actorRepository): Response
     {
@@ -27,7 +27,7 @@ class ActorController extends AbstractController
     }
 
     /**
-     * @Route("/new", name="actor_new", methods={"GET","POST"})
+     * @Route("/new", name="new", methods={"GET","POST"})
      */
     public function new(Request $request): Response
     {
@@ -40,6 +40,8 @@ class ActorController extends AbstractController
             $entityManager->persist($actor);
             $entityManager->flush();
 
+            $this->addFlash('success', 'Cet acteur ou actrice a été ajouté(e) !');
+
             return $this->redirectToRoute('actor_index');
         }
 
@@ -50,7 +52,7 @@ class ActorController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="actor_show", methods={"GET"})
+     * @Route("/{id}", name="show", methods={"GET"})
      * @return Response
      */
     public function show(Actor $actor): Response
@@ -64,7 +66,7 @@ class ActorController extends AbstractController
     }
 
     /**
-     * @Route("/{id}/edit", name="actor_edit", methods={"GET","POST"})
+     * @Route("/{id}/edit", name="edit", methods={"GET","POST"})
      */
     public function edit(Request $request, Actor $actor): Response
     {
@@ -73,6 +75,8 @@ class ActorController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
+
+            $this->addFlash('success', 'La fiche de cet acteur ou actrice a été correctement éditée !');
 
             return $this->redirectToRoute('actor_index');
         }
@@ -84,7 +88,7 @@ class ActorController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="actor_delete", methods={"POST"})
+     * @Route("/{id}", name="delete", methods={"POST"})
      */
     public function delete(Request $request, Actor $actor): Response
     {
