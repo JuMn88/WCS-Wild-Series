@@ -29,4 +29,4 @@ Quest 21: Access control
 
 Quest 22: Registration
 
-Quest 23: The Query Builder (in progress - update 1)
+Quest 23: The Query Builder
