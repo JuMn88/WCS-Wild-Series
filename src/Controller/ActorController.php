@@ -10,6 +10,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 
 /**
  * @Route("/actors", name="actor_")
@@ -28,6 +29,7 @@ class ActorController extends AbstractController
 
     /**
      * @Route("/new", name="new", methods={"GET","POST"})
+     * @Security("is_granted('ROLE_CONTRIBUTOR')")
      */
     public function new(Request $request): Response
     {
@@ -67,6 +69,7 @@ class ActorController extends AbstractController
 
     /**
      * @Route("/{id}/edit", name="edit", methods={"GET","POST"})
+     * @Security("is_granted('ROLE_ADMIN')")
      */
     public function edit(Request $request, Actor $actor): Response
     {
@@ -89,6 +92,7 @@ class ActorController extends AbstractController
 
     /**
      * @Route("/{id}", name="delete", methods={"POST"})
+     * @Security("is_granted('ROLE_ADMIN')")
      */
     public function delete(Request $request, Actor $actor): Response
     {
@@ -96,6 +100,8 @@ class ActorController extends AbstractController
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->remove($actor);
             $entityManager->flush();
+
+            $this->addFlash('danger', 'La fiche de cet acteur ou actrice a été supprimée !');
         }
 
         return $this->redirectToRoute('actor_index');
