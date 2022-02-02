@@ -45,7 +45,6 @@
                     </td>
                     {% if is_granted("ROLE_ADMIN") or app.user is same as(comment.author)  %}
                         <td class="col-2">
-                            {# <a href="{{ path('comment_delete', { commentId: comment.id }) }}">Supprimer</a> #}
                             {{ include('/comment/_delete_form.html.twig') }}
                         </td>
                     {% endif %}

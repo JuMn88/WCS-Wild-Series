@@ -58,6 +58,7 @@ class CommentController extends AbstractController
     /**
      * @Route("/{commentId}", name="delete", methods={"POST"})
      * @ParamConverter("comment", class="App\Entity\Comment", options={"mapping": {"commentId": "id"}})
+     * @isGranted("ROLE_ADMIN")
      */
     public function delete(Request $request, Comment $comment): Response
     {
@@ -66,6 +67,8 @@ class CommentController extends AbstractController
             $comment->setComment('Ce commentaire a été supprimé par son auteur/autrice ou par la modération.');
             // $entityManager->remove($comment);
             $entityManager->flush();
+
+            $this->addFlash('danger', 'Le contenu de ce commentaire a été supprimé !');
         }
 
         return $this->redirectToRoute('program_episode_show', [
