@@ -9,14 +9,15 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 
 /**
- * @Route("/season")
+ * @Route("/season", name="season_")
  */
 class SeasonController extends AbstractController
 {
     /**
-     * @Route("/", name="season_index", methods={"GET"})
+     * @Route("/", name="index", methods={"GET"})
      */
     public function index(SeasonRepository $seasonRepository): Response
     {
@@ -26,7 +27,8 @@ class SeasonController extends AbstractController
     }
 
     /**
-     * @Route("/new", name="season_new", methods={"GET","POST"})
+     * @Route("/new", name="new", methods={"GET","POST"})
+     * @Security("is_granted('ROLE_CONTRIBUTOR')")
      */
     public function new(Request $request): Response
     {
@@ -51,7 +53,7 @@ class SeasonController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="season_show", methods={"GET"})
+     * @Route("/{id}", name="show", methods={"GET"})
      */
     public function show(Season $season): Response
     {
@@ -61,7 +63,8 @@ class SeasonController extends AbstractController
     }
 
     /**
-     * @Route("/{id}/edit", name="season_edit", methods={"GET","POST"})
+     * @Route("/{id}/edit", name="edit", methods={"GET","POST"})
+     * @Security("is_granted('ROLE_ADMIN')")
      */
     public function edit(Request $request, Season $season): Response
     {
@@ -83,7 +86,8 @@ class SeasonController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="season_delete", methods={"POST"})
+     * @Route("/{id}", name="delete", methods={"POST"})
+     * @Security("is_granted('ROLE_ADMIN')")
      */
     public function delete(Request $request, Season $season): Response
     {
@@ -91,6 +95,8 @@ class SeasonController extends AbstractController
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->remove($season);
             $entityManager->flush();
+
+            $this->addFlash('danger', 'Cette saison a été supprimée !');
         }
 
         return $this->redirectToRoute('season_index');
