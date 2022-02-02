@@ -19,6 +19,7 @@
         <header>
             {% include "components/_navbar.html.twig" %}
         </header>
+        {% block flash %}{% include "components/_flash.html.twig" %}{% endblock %}
         {% block body %}{% endblock %}
     </body>
 </html>
