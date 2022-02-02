@@ -15,15 +15,16 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Mailer\MailerInterface;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 /**
- * @Route("/episode")
+ * @Route("/episodes", name="episode_")
  */
 class EpisodeController extends AbstractController
 {
     /**
-     * @Route("/", name="episode_index", methods={"GET"})
+     * @Route("/", name="index", methods={"GET"})
      */
     public function index(EpisodeRepository $episodeRepository): Response
     {
@@ -33,7 +34,8 @@ class EpisodeController extends AbstractController
     }
 
     /**
-     * @Route("/new", name="episode_new", methods={"GET","POST"})
+     * @Route("/new", name="new", methods={"GET","POST"})
+     * @Security("is_granted('ROLE_CONTRIBUTOR')")
      */
     public function new(Request $request, Slugify $slugify, MailerInterface $mailer): Response
     {
@@ -69,7 +71,7 @@ class EpisodeController extends AbstractController
     }
 
     /**
-     * @Route("/{slug}", name="episode_show", methods={"GET"})
+     * @Route("/{slug}", name="show", methods={"GET"})
      */
     public function show(Episode $episode): Response
     {
@@ -79,7 +81,8 @@ class EpisodeController extends AbstractController
     }
 
     /**
-     * @Route("/{slug}/edit", name="episode_edit", methods={"GET","POST"})
+     * @Route("/{slug}/edit", name="edit", methods={"GET","POST"})
+     * @Security("is_granted('ROLE_ADMIN')")
      */
     public function edit(Request $request, Episode $episode): Response
     {
@@ -101,7 +104,8 @@ class EpisodeController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="episode_delete", methods={"POST"})
+     * @Route("/{id}", name="delete", methods={"POST"})
+     * @Security("is_granted('ROLE_ADMIN')")
      */
     public function delete(Request $request, Episode $episode): Response
     {
@@ -109,6 +113,8 @@ class EpisodeController extends AbstractController
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->remove($episode);
             $entityManager->flush();
+
+            $this->addFlash('danger', 'Cet épisode a été supprimé !');
         }
 
         return $this->redirectToRoute('episode_index');

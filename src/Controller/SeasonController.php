@@ -12,7 +12,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 
 /**
- * @Route("/season", name="season_")
+ * @Route("/seasons", name="season_")
  */
 class SeasonController extends AbstractController
 {
