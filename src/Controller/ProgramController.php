@@ -15,6 +15,7 @@ use App\Controller\CommentController;
 use App\Form\SearchProgramFormType;
 use App\Repository\EpisodeRepository;
 use App\Repository\ProgramRepository;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Mailer\MailerInterface;
 use Symfony\Component\HttpFoundation\Response;
@@ -236,15 +237,19 @@ class ProgramController extends AbstractController
      * @Route("/{id}/watchlist", name="watchlist", methods={"GET","POST"})
      * @isGranted("ROLE_CONTRIBUTOR")
      */
-    public function addToWatchlist(Program $program): Response
+    public function addToWatchlist(Request $request, Program $program, EntityManagerInterface $entityManager): Response
     {
-        $this->getUser()->addToWatchlist($program);
-        $entityManager = $this->getDoctrine()->getManager();
+        if ($this->getUser()->isInWatchlist($program)) {
+            $this->getUser()->removeFromWatchlist($program);
+        } else {
+            $this->getUser()->addToWatchlist($program);
+        }
         $entityManager->flush();
 
-        return $this->render('program/show.html.twig', [
-            'program' => $program,
-            'seasons' => $program->getSeasons(),
-        ]);
+        return $this->redirectToRoute('program_show', [
+                'program' => $program,
+                'slug' => $program->getSlug(),
+            ]);
+
     }
 }
