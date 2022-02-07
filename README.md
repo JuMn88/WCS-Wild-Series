@@ -33,4 +33,4 @@ Quest 23: The Query Builder
 
 Quest 24: Sessions and flash messages
 
-Quest 25.1 : Watchlist (ongoing)
+Quest 25.1 : Watchlist (ongoing - update 2)
