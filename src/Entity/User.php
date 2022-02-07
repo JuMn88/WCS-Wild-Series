@@ -2,12 +2,13 @@
 
 namespace App\Entity;
 
-use App\Repository\UserRepository;
+use App\Entity\Program;
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
-use Symfony\Component\Security\Core\User\UserInterface;
-use Doctrine\Common\Collections\ArrayCollection;
+use App\Repository\UserRepository;
 use Doctrine\Common\Collections\Collection;
+use Doctrine\Common\Collections\ArrayCollection;
+use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * @ORM\Entity(repositoryClass=UserRepository::class)
@@ -63,10 +64,17 @@ class User implements UserInterface
      */
     private $isVerified = false;
 
+    /**
+     * @ORM\ManyToMany(targetEntity=Program::class, inversedBy="viewers")
+     * @ORM\JoinTable(name="watchlist")
+     */
+    private $watchlist;
+
     public function __construct()
     {
         $this->comment = new ArrayCollection();
         $this->programs = new ArrayCollection();
+        $this->watchlist = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -239,5 +247,34 @@ class User implements UserInterface
         $this->isVerified = $isVerified;
 
         return $this;
+    }
+
+    /**
+     * @return Collection|Program[]
+     */
+    public function getWatchlist(): Collection
+    {
+        return $this->watchlist;
+    }
+
+    public function addToWatchlist(Program $program): self
+    {
+        if (!$this->watchlist->contains($program)) {
+            $this->watchlist[] = $program;
+        }
+
+        return $this;
+    }
+
+    public function removeFromWatchlist(Program $program): self
+    {
+        $this->watchlist->removeElement($program);
+
+        return $this;
+    }
+
+    public function isInWatchlist(Program $program): bool
+    {
+        return $this->watchlist->contains($program);
     }
 }

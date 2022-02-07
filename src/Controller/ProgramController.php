@@ -19,6 +19,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Mailer\MailerInterface;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
@@ -228,6 +229,22 @@ class ProgramController extends AbstractController
         return $this->render('program/edit.html.twig', [
             'program' => $program,
             'form' => $form->createView(),
+        ]);
+    }
+
+    /**
+     * @Route("/{id}/watchlist", name="watchlist", methods={"GET","POST"})
+     * @isGranted("ROLE_CONTRIBUTOR")
+     */
+    public function addToWatchlist(Program $program): Response
+    {
+        $this->getUser()->addToWatchlist($program);
+        $entityManager = $this->getDoctrine()->getManager();
+        $entityManager->flush();
+
+        return $this->render('program/show.html.twig', [
+            'program' => $program,
+            'seasons' => $program->getSeasons(),
         ]);
     }
 }

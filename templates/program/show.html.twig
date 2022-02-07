@@ -6,7 +6,16 @@
     <div class="media">
         <img class="align-self-start mr-3 w-25" src="{{program.poster}}" alt="{{ program.title }} poster">
         <div class="media-body">
-            <h1 class="mt-0">{{ program.title }}</h1>
+            <h1 class="mt-0">
+                {{ program.title }}
+                {% if app.user %}
+                    <a href="{{ path('program_watchlist', {id: program.id})}}">
+                        <i class="bi {{ app.user.isInWatchlist(program) ? 'bi-heart-fill' : 'bi-heart' }}"></i>
+                    </a>
+                {% endif %}
+                
+                
+            </h1>
             <p>{{ program.summary }}</p>
             <p>Catégorie : {{ program.category.name }}</p>
             <ul>
