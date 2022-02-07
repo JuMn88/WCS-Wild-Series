@@ -32,3 +32,5 @@ Quest 22: Registration
 Quest 23: The Query Builder
 
 Quest 24: Sessions and flash messages
+
+Quest 25.1 : Watchlist (ongoing)
