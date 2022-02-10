@@ -1,3 +1,10 @@
 hello_username: Salut %username%
-account.logout: Se déconnecter
-account.login: Se connecter
+account:
+  logout: Se déconnecter
+  login: Se connecter
+nav:
+  index: Wild Séries
+  categories: Catégories
+  programs: Programmes
+  episodes: Épisodes
+  casting: Casting

@@ -1,3 +1,10 @@
 hello_username: Hello %username%
-account.logout: Logout
-account.login: Login
+account:
+  logout: Logout
+  login: Login
+nav:
+  index: Wild Series
+  categories: Categories
+  programs: Programs
+  episodes: Episodes
+  casting: Casting
