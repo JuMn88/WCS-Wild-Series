@@ -36,3 +36,5 @@ Quest 24: Sessions and flash messages
 Quest 25.1 : Watchlist
 
 Quest 25.2 : Watchlist using AJAX
+
+Quest 26 : Internationalization (ongoing)
