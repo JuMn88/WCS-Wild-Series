@@ -1,9 +1,13 @@
-hello_username: Hello %username%
+hello_username: 'Hello %username%'
 account.logout: Logout
 account.login: Login
-nav.index: Wild Series
+nav.index: 'Wild Series'
 nav.categories: Categories
 nav.programs: Programs
 nav.episodes: Episodes
 nav.casting: Casting
-logo_alt: website's logo in the shape of a TV
+nav.home: Home
+img.logo_alt: 'website''s logo in the shape of a TV'
+img.poster_alt: "%title%'s poster"
+index.title: Welcome!
+index.subtitle: 'Last programs added:'

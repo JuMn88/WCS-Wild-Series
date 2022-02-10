@@ -1,9 +1,13 @@
-hello_username: Salut %username%
-account.logout: Se déconnecter
-account.login: Se connecter
-nav.index: Wild Séries
+hello_username: 'Salut %username%'
+account.logout: 'Se déconnecter'
+account.login: 'Se connecter'
+nav.index: 'Wild Séries'
 nav.categories: Catégories
 nav.programs: Programmes
 nav.episodes: Épisodes
 nav.casting: Casting
-logo_alt: logo du site représentant une télévision
+nav.home: Accueil
+img.logo_alt: 'logo du site représentant une télévision'
+img.poster_alt: 'Affiche de la série %title%'
+index.title: Bienvenue !
+index.subtitle: 'Dernières séries ajoutées :'

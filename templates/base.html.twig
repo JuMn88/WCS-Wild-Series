@@ -2,9 +2,9 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <link rel="icon" href="{{ asset('build/emission-de-television.png') }}" alt=""/>
+        <link rel="icon" href="{{ asset('build/emission-de-television.png') }}" alt="{{ 'logo_alt'|trans }}"/>
         <!-- <div>Icônes conçues par <a href="https://www.freepik.com" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/fr/" title="Flaticon">www.flaticon.com</a></div> -->
-        <title>{% block title %}Welcome!{% endblock %}</title>
+        <title>{% block title %}{{ 'nav.index'|trans }}{% endblock %}</title>
         {# Run `composer require symfony/webpack-encore-bundle`
            and uncomment the following Encore helpers to start using Symfony UX #}
         {% block stylesheets %}

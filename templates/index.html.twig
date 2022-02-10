@@ -1,8 +1,10 @@
 {% extends 'base.html.twig' %}
 
+{% block title %}{{ 'nav.home'|trans }} - {{ parent() }}{% endblock %}
+
 {% block body %}
-    <h1>Bienvenue !</h1>
-    <h2>Dérnières séries ajoutées :</h2>
+    <h1>{{ 'index.title'|trans }}</h1>
+    <h2>{{ 'index.subtitle'|trans }}</h2>
     <div id="carouselExampleCaptions" class="carousel slide w-25" data-bs-ride="carousel">
         <div class="carousel-indicators">
             {% for program in programs %}
@@ -17,11 +19,15 @@
             {% for program in programs %}
                 {% if loop.first %}
                     <div class="carousel-item active">
-                        <img src="{{ program.poster }}" class="d-block ratio ratio-1x1" alt="...">
+                        <img
+                            src="{{ program.poster }}"
+                            class="d-block ratio ratio-1x1"
+                            alt="{% trans with {'%title%': program.title} %}img.poster_alt{% endtrans %}"
+                        >
                     </div>
                 {% else %}
                     <div class="carousel-item">
-                        <img src="{{ program.poster }}" class="d-block ratio ratio-1x1" alt="...">
+                        <img src="{{ program.poster }}" class="d-block ratio ratio-1x1" alt="{% trans with {'%title%': program.title} %}img.poster_alt{% endtrans %}">
                     </div>
                 {% endif %}
            {% endfor %}
