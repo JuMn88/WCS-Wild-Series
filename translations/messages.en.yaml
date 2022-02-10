@@ -1,10 +1,9 @@
 hello_username: Hello %username%
-account:
-  logout: Logout
-  login: Login
-nav:
-  index: Wild Series
-  categories: Categories
-  programs: Programs
-  episodes: Episodes
-  casting: Casting
+account.logout: Logout
+account.login: Login
+nav.index: Wild Series
+nav.categories: Categories
+nav.programs: Programs
+nav.episodes: Episodes
+nav.casting: Casting
+logo_alt: website's logo in the shape of a TV

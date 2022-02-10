@@ -1,10 +1,9 @@
 hello_username: Salut %username%
-account:
-  logout: Se déconnecter
-  login: Se connecter
-nav:
-  index: Wild Séries
-  categories: Catégories
-  programs: Programmes
-  episodes: Épisodes
-  casting: Casting
+account.logout: Se déconnecter
+account.login: Se connecter
+nav.index: Wild Séries
+nav.categories: Catégories
+nav.programs: Programmes
+nav.episodes: Épisodes
+nav.casting: Casting
+logo_alt: logo du site représentant une télévision
