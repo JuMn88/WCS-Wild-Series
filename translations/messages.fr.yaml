@@ -6,8 +6,24 @@ nav.categories: Catégories
 nav.programs: Programmes
 nav.episodes: Épisodes
 nav.casting: Casting
+nav.casting_back: 'Retour vers Casting'
 nav.home: Accueil
+nav.actions: Actions
+nav.action: Action
+nav.show: Détails
+nav.edit: Modifier
+nav.no_records: 'Aucun résultat trouvé'
+nav.new: Ajouter
+nav.delete: Supprimer
 img.logo_alt: 'logo du site représentant une télévision'
 img.poster_alt: 'Affiche de la série %title%'
-index.title: Bienvenue !
+index.title: 'Bienvenue !'
 index.subtitle: 'Dernières séries ajoutées :'
+casting.index_title: 'Liste des acteurs et actrices'
+casting.name: Nom
+casting.show_title: 'Fiche artiste'
+casting.programs: Séries
+casting.new: 'Ajouter un artiste'
+casting.new_title: 'Créer une fiche artiste'
+casting.edit: Modifier la fiche artiste
+casting.edit_title: 'Modifier la fiche de : '

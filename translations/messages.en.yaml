@@ -6,8 +6,24 @@ nav.categories: Categories
 nav.programs: Programs
 nav.episodes: Episodes
 nav.casting: Casting
+nav.casting_back: 'Back to Casting'
 nav.home: Home
+nav.actions: Actions
+nav.action: Action
+nav.show: Show
+nav.edit: Edit
+nav.no_records: 'No records found'
+nav.new: 'Create new'
+nav.delete: Delete
 img.logo_alt: 'website''s logo in the shape of a TV'
-img.poster_alt: "%title%'s poster"
+img.poster_alt: '%title%''s poster'
 index.title: Welcome!
 index.subtitle: 'Last programs added:'
+casting.index_title: 'List of actors and actresses'
+casting.name: Name
+casting.show_title: 'Artist''s details'
+casting.programs: Programs
+casting.new: 'Add an artist'
+casting.new_title: 'Add an artist'
+casting.edit: Update artist's details
+casting.edit_title: 'Update details of: '

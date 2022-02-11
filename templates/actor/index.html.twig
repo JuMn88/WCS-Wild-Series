@@ -1,16 +1,22 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Actor index{% endblock %}
+{% block title %}{{ 'nav.casting'|trans }} - {{ parent() }}{% endblock %}
 
 {% block body %}
-    <h1>Actor index</h1>
+    <h1>{{ 'casting.index_title'|trans }}</h1>
 
     <table class="table">
         <thead>
             <tr>
                 <th>Id</th>
-                <th>Name</th>
-                <th>actions</th>
+                <th>{{ 'casting.name'|trans }}</th>
+                <th>
+                    {% if is_granted("ROLE_ADMIN") %}
+                        {{ 'nav.actions'|trans }}
+                    {% else %}
+                        {{ 'nav.action'|trans }}
+                    {% endif %}
+                </th>
             </tr>
         </thead>
         <tbody>
@@ -19,19 +25,27 @@
                 <td>{{ actor.id }}</td>
                 <td>{{ actor.name }}</td>
                 <td>
-                    <a href="{{ path('actor_show', {'id': actor.id}) }}">show</a>
+                    <a class="btn btn-secondary" href="{{ path('actor_show', {'id': actor.id}) }}">
+                        {{ 'nav.show'|trans }}
+                    </a>
                     {% if is_granted("ROLE_ADMIN") %}
-                        <a href="{{ path('actor_edit', {'id': actor.id}) }}">edit</a>
+                        <a class="btn btn-secondary" href="{{ path('actor_edit', {'id': actor.id}) }}">
+                            {{ 'nav.edit'|trans }}
+                        </a>
                     {% endif %}
                 </td>
             </tr>
         {% else %}
             <tr>
-                <td colspan="3">no records found</td>
+                <td colspan="3">
+                    {{ 'nav.no_records'|trans }}
+                </td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
 
-    <a href="{{ path('actor_new') }}">Create new</a>
+    <a class="btn btn-primary" href="{{ path('actor_new') }}">
+        {{ 'nav.new'|trans }}
+    </a>
 {% endblock %}
