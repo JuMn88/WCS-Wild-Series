@@ -15,18 +15,12 @@ class CommentType extends AbstractType
     {
         $builder
             ->add('rate', RangeType::class, [
-                'label' => 'Note : ',
                 'attr' => [
                     'min' => '1',
                     'max' => '5',
                 ],
             ])
-            ->add('comment', TextareaType::class, [
-                'label' => 'Commentaire : ',
-                'attr' => [
-                    'placeholder' => 'Saisir votre avis'
-                ]
-            ])
+            ->add('comment', TextareaType::class)
         ;
     }
 
