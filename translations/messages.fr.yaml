@@ -39,3 +39,6 @@ comment.rate: 'Note :'
 comment.comment: 'Commentaire :'
 comment.comment_placeholder: Qu'avez-vous pensé de cet épisode ?
 comment.delete_onsubmit: return confirm('Êtes-vous sûr(e) de vouloir supprimer ce commentaire ?');
+casting.name_label: 'Nom :'
+casting.name_placeholder: Entrez le nom de l'artiste
+casting.programs_label: 'Série :'
