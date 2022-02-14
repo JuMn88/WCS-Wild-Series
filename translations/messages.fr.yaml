@@ -2,8 +2,11 @@ hello_username: 'Salut %username%'
 account.logout: 'Se déconnecter'
 account.login: 'Se connecter'
 nav.index: 'Wild Séries'
+nav.index_back: 'Retour à l''accueil'
 nav.categories: Catégories
+nav.categories_back: 'Retour aux Catégories'
 nav.programs: Programmes
+nav.programs_show: Voir la fiche
 nav.episodes: Épisodes
 nav.casting: Casting
 nav.casting_back: 'Retour vers Casting'
@@ -23,7 +26,11 @@ casting.index_title: 'Liste des acteurs et actrices'
 casting.name: Nom
 casting.show_title: 'Fiche artiste'
 casting.programs: Séries
-casting.new: 'Ajouter un artiste'
+casting.new: 'Ajouter un ou une artiste'
 casting.new_title: 'Créer une fiche artiste'
-casting.edit: Modifier la fiche artiste
+casting.edit: 'Modifier la fiche artiste'
 casting.edit_title: 'Modifier la fiche de : '
+categories.index_title: 'Toutes les catégories de séries'
+categories.index_subtitle: Catégorie
+categories.new: 'Ajouter une catégorie'
+categories.show_title: 'Les dernières séries de la catégorie %categoryname%'

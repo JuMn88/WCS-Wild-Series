@@ -1,18 +1,18 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Add a category{% endblock %}
+{% block title %}{{ 'categories.new'|trans }} - {{ parent() }}{% endblock %}
 
 {% block body %}
     <div class="mt-3">
         {{ form_start(form) }}
         {{ form_widget(form) }}
-        <input class="mt-3 btn btn-secondary" type='submit' value='Ajouter une catégorie'>
+        <input class="mt-3 btn btn-secondary" type='submit' value={{ 'nav.new'|trans }}>
         {{ form_end(form) }}
     </div>
-    <a class="mt-3 btn btn-primary" href="{{ path('category_index') }}">
-        Retour
+    <a class="mt-3 btn btn-secondary" href="{{ path('category_index') }}">
+        {{ 'nav.categories_back'|trans }}
     </a>
     <a class="mt-3 btn btn-primary" href="{{ path('app_index') }}">
-        Retour à l'accueil
+        {{ 'nav.index_back'|trans }}
     </a>
 {% endblock %}

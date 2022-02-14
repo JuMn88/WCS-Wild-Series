@@ -2,8 +2,11 @@ hello_username: 'Hello %username%'
 account.logout: Logout
 account.login: Login
 nav.index: 'Wild Series'
+nav.index_back: 'Back to Home page'
 nav.categories: Categories
+nav.categories_back: 'Back to Categories'
 nav.programs: Programs
+nav.programs_show: See details
 nav.episodes: Episodes
 nav.casting: Casting
 nav.casting_back: 'Back to Casting'
@@ -25,5 +28,9 @@ casting.show_title: 'Artist''s details'
 casting.programs: Programs
 casting.new: 'Add an artist'
 casting.new_title: 'Add an artist'
-casting.edit: Update artist's details
+casting.edit: 'Update artist''s details'
 casting.edit_title: 'Update details of: '
+categories.index_title: 'All categories'
+categories.index_subtitle: Category
+categories.new: 'Add a category'
+categories.show_title: 'Last programs of %categoryname%''s category'

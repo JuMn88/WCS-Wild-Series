@@ -1,20 +1,29 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Catégorie {{ category.name }}{% endblock %}
+{% block title %}{{ category.name }} - {{ parent() }}{% endblock %}
 
 {% block body %}
-    <h1>Les dernières séries de la catégorie {{ category.name }} : </h1>
+    <h1>
+        {% trans with {'%categoryname%': category.name} %}
+          categories.show_title
+        {% endtrans %}
+    </h1>
     {% for program in programs %}
         <div>
             <h2> #{{ program.id }} / {{ program.title }}</h2>
             <p>{{ program.summary }}</p>
             {# Lien vers la fiche de la série : #}
-            <a href="{{ path("program_show", { slug: program.slug }) }}">Voir la fiche</a>
+            <a class="btn btn-secondary mb-3" href="{{ path("program_show", { slug: program.slug }) }}">
+                {{ 'nav.programs_show'|trans }}
+            </a>
         </div>
     {% else %}
-        Aucune série trouvée.
+        {{ 'nav.no_records'|trans }}
     {% endfor %}
-    <a href="{{ path('category_index') }}">
-        Retour à la liste des catégories
+    <a class="btn btn-secondary mb-3" href="{{ path('category_index') }}">
+        {{ 'nav.categories_back'|trans }}
+    </a>
+    <a class="btn btn-primary mb-3" href="{{ path('app_index') }}">
+        {{ 'nav.index_back'|trans }}
     </a>
 {% endblock %}
