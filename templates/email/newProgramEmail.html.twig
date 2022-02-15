@@ -1,13 +1,26 @@
 {% extends '/email/layoutEmail.html.twig' %}
 
 {% block title %}
-    {{ parent() }} - Nouvelle série
+    {{ 'email.program'|trans }} - {{ parent() }}
 {% endblock %}
 
 {% block body %}
-    <h1>Nouvel série {{ program.title }} ajoutée !</h1>
-    <p>Bonjour, une nouvelle série {{ program.title }} a été ajoutée sur Wild Séries !</p>
-    <p>Résumé : {{ program.summary }}</p>
-    <img src="{{ program.poster }}" alt="Affiche de la série {{ program.title }}" style="height:300px; width:auto">
-    <a href="localhost:8000/programs/{{ program.slug }}">Aller voir</a>
+    <h1>
+        {% trans with {'%programtitle%': program.title} %}
+          email.program_title
+        {% endtrans %}
+    </h1>
+    <p>
+        {% trans with {'%programtitle%': program.title} %}
+          email.program_content
+        {% endtrans %}
+    </p>
+    <p>
+        {% trans with {'%programsummary%': program.summary} %}
+          email.program_summary
+        {% endtrans %}
+        Résumé : {{ program.summary }}
+    </p>
+    <img src="{{ program.poster }}" alt="{% trans with {'%title%': program.title} %}img.poster_alt{% endtrans %}" style="height:300px; width:auto">
+    <a href="localhost:8000/programs/{{ program.slug }}">{{ 'nav.email_go'|trans }}</a>
 {% endblock %}

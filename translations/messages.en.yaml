@@ -19,6 +19,7 @@ nav.no_records: 'No records found'
 nav.new: 'Create new'
 nav.delete: Delete
 nav.post: Post
+nav.email_go: 'Go checkit out!'
 img.logo_alt: 'website''s logo in the shape of a TV'
 img.poster_alt: '%title%''s poster'
 index.title: Welcome!
@@ -37,8 +38,15 @@ categories.new: 'Add a category'
 categories.show_title: 'Last programs of %categoryname%''s category'
 comment.rate: 'Rate:'
 comment.comment: 'Comment:'
-comment.comment_placeholder: What did you think about this episode?
-comment.delete_onsubmit: return confirm('Are you sure you want to delete this comment?');
+comment.comment_placeholder: 'What did you think about this episode?'
+comment.delete_onsubmit: 'return confirm(''Are you sure you want to delete this comment?'');'
 casting.name_label: 'Name:'
-casting.name_placeholder: Type in the artist's name
+casting.name_placeholder: 'Type in the artist''s name'
 casting.programs_label: 'Program:'
+email.episode: 'New episode'
+email.episode_title: 'New episode %episodetitle% added!'
+email.episode_content: 'Hello, a new episode of tv show %programtitle% has been added to Wild Series! It''s episode n°%episodenumber% and is titled %episodetitle%.'
+email.program: New program
+email.program_title: New program %programtitle% added!
+email.program_content: Hello, a new tv show %programtitle% has been added to Wild Series!
+email.program_summary: 'Synopsis : %programsummary%'

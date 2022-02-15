@@ -19,6 +19,7 @@ nav.no_records: 'Aucun résultat trouvé'
 nav.new: Ajouter
 nav.delete: Supprimer
 nav.post: Poster
+nav.email_go: 'Aller voir !'
 img.logo_alt: 'logo du site représentant une télévision'
 img.poster_alt: 'Affiche de la série %title%'
 index.title: 'Bienvenue !'
@@ -37,8 +38,15 @@ categories.new: 'Ajouter une catégorie'
 categories.show_title: 'Les dernières séries de la catégorie %categoryname%'
 comment.rate: 'Note :'
 comment.comment: 'Commentaire :'
-comment.comment_placeholder: Qu'avez-vous pensé de cet épisode ?
-comment.delete_onsubmit: return confirm('Êtes-vous sûr(e) de vouloir supprimer ce commentaire ?');
+comment.comment_placeholder: 'Qu''avez-vous pensé de cet épisode ?'
+comment.delete_onsubmit: 'return confirm(''Êtes-vous sûr(e) de vouloir supprimer ce commentaire ?'');'
 casting.name_label: 'Nom :'
-casting.name_placeholder: Entrez le nom de l'artiste
+casting.name_placeholder: 'Entrez le nom de l''artiste'
 casting.programs_label: 'Série :'
+email.episode: 'Nouvel épisode'
+email.episode_title: 'Nouvel épisode %episodetitle% ajouté !'
+email.episode_content: 'Bonjour, un nouvel épisode de la série %programtitle% a été ajouté sur Wild Séries ! Il s''agit de l''épisode n°%episodenumber% et s''intitule %episodetitle%.'
+email.program: Nouvelle série
+email.program_title: Nouvel série %programtitle% ajoutée !
+email.program_content: Bonjour, une nouvelle série %programtitle% a été ajoutée sur Wild Séries !
+email.program_summary: 'Résumé : %programsummary%'

@@ -1,12 +1,23 @@
 {% extends '/email/layoutEmail.html.twig' %}
 
 {% block title %}
-    {{ parent() }} - Nouvel épisode
+    {{ 'email.episode'|trans }} - {{ parent() }}
 {% endblock %}
 
 {% block body %}
-    <h1>Nouvel épisode {{ episode.title }} ajouté !</h1>
-    <p>Bonjour, un nouvel épisode de la série {{ program.title }} a été ajouté sur Wild Séries !
-        Il s'agit de l'épisode n°{{ episode.number }} et s'intitule {{ episode.title }}.</p>
-    <a href="localhost:8000/episode/{{ episode.slug }}">Aller voir</a>
+    <h1>
+        {% trans with {'%episodetitle%': episode.title} %}
+          email.episode_title
+        {% endtrans %}
+    </h1>
+    <p>
+        {% trans with {
+            '%programtitle%': program.title,
+            '%episodenumber%': episode.number,
+            '%episodetitle%': episode.title
+        } %}
+          email.episode_content
+        {% endtrans %}
+    </p>
+    <a href="localhost:8000/episode/{{ episode.slug }}">{{ 'nav.email_go'|trans }}</a>
 {% endblock %}
