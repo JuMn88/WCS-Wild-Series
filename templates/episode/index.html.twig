@@ -1,41 +1,55 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Episode index{% endblock %}
+{% block title %}{{ 'nav.episodes'|trans }} - {{ parent() }}{% endblock %}
 
 {% block body %}
-    <h1>Episode index</h1>
+    <h1>{{ 'episodes.index_title'|trans }}</h1>
 
     <table class="table">
         <thead>
             <tr>
                 <th>Id</th>
-                <th>Title</th>
-                <th>Number</th>
-                <th>Summary</th>
-                <th>actions</th>
+                <th>{{ 'episodes.title'|trans }}</th>
+                <th>{{ 'episodes.number'|trans }}</th>
+                <th>{{ 'episodes.summary'|trans }}</th>
+                <th>
+                    {% if is_granted("ROLE_ADMIN") %}
+                        {{ 'nav.actions'|trans }}
+                    {% else %}
+                        {{ 'nav.action'|trans }}
+                    {% endif %}
+                </th>
             </tr>
         </thead>
         <tbody>
-        {% for episode in episodes %}
-            <tr>
-                <td>{{ episode.id }}</td>
-                <td>{{ episode.title }}</td>
-                <td>{{ episode.number }}</td>
-                <td>{{ episode.summary }}</td>
-                <td>
-                    <a href="{{ path('episode_show', {slug: episode.slug}) }}">show</a>
-                    {% if is_granted("ROLE_ADMIN") %}
-                        <a href="{{ path('episode_edit', {slug: episode.slug}) }}">edit</a>
-                    {% endif %}
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="5">no records found</td>
-            </tr>
-        {% endfor %}
+            {% for episode in episodes %}
+                <tr>
+                    <td>{{ episode.id }}</td>
+                    <td>{{ episode.title }}</td>
+                    <td>{{ episode.number }}</td>
+                    <td>{{ episode.summary }}</td>
+                    <td>
+                        <a class="btn btn-secondary" href="{{ path('episode_show', {slug: episode.slug}) }}">
+                            {{ 'nav.show'|trans }}
+                        </a>
+                        {% if is_granted("ROLE_ADMIN") %}
+                            <a class="btn btn-secondary" href="{{ path('episode_edit', {slug: episode.slug}) }}">
+                                {{ 'nav.edit'|trans }}
+                            </a>
+                        {% endif %}
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="5">
+                        {{ 'nav.no_records'|trans }}
+                    </td>
+                </tr>
+            {% endfor %}
         </tbody>
     </table>
 
-    <a href="{{ path('episode_new') }}">Create new</a>
+    <a class="btn btn-primary" href="{{ path('episode_new') }}">
+        {{ 'nav.new'|trans }}
+    </a>
 {% endblock %}

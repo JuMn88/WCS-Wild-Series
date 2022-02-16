@@ -8,6 +8,7 @@ nav.categories_back: 'Retour aux Catégories'
 nav.programs: Programmes
 nav.programs_show: 'Voir la fiche'
 nav.episodes: Épisodes
+nav.episode_back: 'Retour vers Épisodes'
 nav.casting: Casting
 nav.casting_back: 'Retour vers Casting'
 nav.home: Accueil
@@ -32,6 +33,9 @@ casting.new: 'Ajouter un ou une artiste'
 casting.new_title: 'Créer une fiche artiste'
 casting.edit: 'Modifier la fiche artiste'
 casting.edit_title: 'Modifier la fiche de : '
+casting.name_label: 'Nom :'
+casting.name_placeholder: 'Entrez le nom de l''artiste'
+casting.programs_label: 'Série :'
 categories.index_title: 'Toutes les catégories de séries'
 categories.index_subtitle: Catégorie
 categories.new: 'Ajouter une catégorie'
@@ -40,13 +44,25 @@ comment.rate: 'Note :'
 comment.comment: 'Commentaire :'
 comment.comment_placeholder: 'Qu''avez-vous pensé de cet épisode ?'
 comment.delete_onsubmit: 'return confirm(''Êtes-vous sûr(e) de vouloir supprimer ce commentaire ?'');'
-casting.name_label: 'Nom :'
-casting.name_placeholder: 'Entrez le nom de l''artiste'
-casting.programs_label: 'Série :'
 email.episode: 'Nouvel épisode'
 email.episode_title: 'Nouvel épisode %episodetitle% ajouté !'
 email.episode_content: 'Bonjour, un nouvel épisode de la série %programtitle% a été ajouté sur Wild Séries ! Il s''agit de l''épisode n°%episodenumber% et s''intitule %episodetitle%.'
-email.program: Nouvelle série
-email.program_title: Nouvel série %programtitle% ajoutée !
-email.program_content: Bonjour, une nouvelle série %programtitle% a été ajoutée sur Wild Séries !
+email.program: 'Nouvelle série'
+email.program_title: 'Nouvel série %programtitle% ajoutée !'
+email.program_content: 'Bonjour, une nouvelle série %programtitle% a été ajoutée sur Wild Séries !'
 email.program_summary: 'Résumé : %programsummary%'
+episodes.index_title: 'Tous les épisodes de séries'
+episodes.title: Titre
+episodes.number: Numéro
+episodes.summary: Résumé
+episodes.delete_onsubmit: 'return confirm(''Êtes-vous sûr(e) de vouloir supprimer cet épisode ?'');'
+episodes.new: 'Ajouter un épisode'
+episodes.new_title: 'Créer une fiche épisode'
+episodes.season_label: 'Saison :'
+episodes.title_label: 'Titre :'
+episodes.title_placeholder: 'Entrez le titre de l''épisode'
+episodes.number_label: 'Numéro :'
+episodes.summary_label: 'Résumé :'
+episodes.summary_placeholder: 'De quoi parle cet épisode ?'
+episodes.edit: 'Modifier la fiche épisode'
+episodes.edit_title: 'Modifier la fiche de : '

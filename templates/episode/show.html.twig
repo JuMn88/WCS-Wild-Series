@@ -1,9 +1,9 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Episode{% endblock %}
+{% block title %}{{ episode.title }} - {{ parent() }}{% endblock %}
 
 {% block body %}
-    <h1>Episode</h1>
+    <h1>{{ episode.season.program.title }} - S{{ episode.season.number }}E{{ episode.number }}</h1>
 
     <table class="table">
         <tbody>
@@ -12,20 +12,26 @@
                 <td>{{ episode.id }}</td>
             </tr>
             <tr>
-                <th>Title</th>
+                <th>{{ 'episodes.title'|trans }}</th>
                 <td>{{ episode.title }}</td>
             </tr>
             <tr>
-                <th>Number</th>
+                <th>{{ 'episodes.number'|trans }}</th>
                 <td>{{ episode.number }}</td>
             </tr>
             <tr>
-                <th>Summary</th>
+                <th>{{ 'episodes.summary'|trans }}</th>
                 <td>{{ episode.summary }}</td>
             </tr>
         </tbody>
     </table>
-    <a class="btn btn-secondary mt-3" href="{{ path('episode_edit', {slug: episode.slug}) }}">Editer</a>
+    <a class="btn btn-secondary mt-3" href="{{ path('episode_edit', {slug: episode.slug}) }}">
+        {{ 'nav.edit'|trans }}
+    </a>
+
     {{ include('episode/_delete_form.html.twig') }}
-    <a class="btn btn-primary" href="{{ path('episode_index') }}">Retour</a>
+
+    <a class="btn btn-primary" href="{{ path('episode_index') }}">
+        {{ 'nav.episode_back'|trans }}
+    </a>
 {% endblock %}

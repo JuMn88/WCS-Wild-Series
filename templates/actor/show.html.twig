@@ -28,11 +28,11 @@
         </tbody>
     </table>
 
-    <a class="btn btn-primary" href="{{ path('actor_index') }}">
-        {{ 'nav.casting_back'|trans }}
-    </a>
-
     <a class="btn btn-secondary" href="{{ path('actor_edit', {'id': actor.id}) }}">{{ 'nav.edit'|trans }}</a>
 
     {{ include('actor/_delete_form.html.twig') }}
+
+    <a class="btn btn-primary" href="{{ path('actor_index') }}">
+        {{ 'nav.casting_back'|trans }}
+    </a>
 {% endblock %}

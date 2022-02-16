@@ -3,6 +3,12 @@
     action="{{ path('comment_delete', {'commentId': comment.id}) }}"
     onsubmit="{{ 'comment.delete_onsubmit'|trans }}"
     >
-    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ comment.id) }}">
-    <button class="btn btn-danger">{{ 'nav.delete'|trans }}</button>
+    <input
+        type="hidden"
+        name="_token"
+        value="{{ csrf_token('delete' ~ comment.id) }}"
+    >
+    <button class="btn btn-danger">
+        {{ 'nav.delete'|trans }}
+    </button>
 </form>
