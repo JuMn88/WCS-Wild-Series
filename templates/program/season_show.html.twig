@@ -1,18 +1,20 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}{{ program.title }} - Saison {{ season.number }}{% endblock %}
+{% block title %}{{ program.title }} - {{ 'programs.season'|trans }} {{ season.number }} - {{ parent() }}{% endblock %}
 
 {% block body %}
     <div class="media">
         <div class="media-body">
-            <h1 class="mt-0">Saison {{ season.number }} de {{ program.title }}</h1>
+            <h1 class="mt-0">
+                {{ program.title }} - {{ 'programs.season'|trans }} {{ season.number }}
+            </h1>
             <p>{{ season.description }}</p>
-            <p>Année : {{ season.year }}</p>
+            <p>{{ 'programs.year'|trans }} {{ season.year }}</p>
             <ul>
                 {% for episode in episodes %}
                     <li>
                         <a href="{{ path("program_episode_show", { programSlug: program.slug , season: season.id , episodeSlug: episode.slug }) }}">
-                            Episode {{ episode.number }} : {{ episode.title }}
+                            {{ 'programs.episode'|trans }} {{ episode.number }} : {{ episode.title }}
                         </a>
                     </li>
                 {% endfor %}
@@ -21,13 +23,13 @@
     </div>
 
     <p>
-        <a href="{{ path("program_show", { slug: program.slug }) }}">
-            Retour à la série {{ program.title }}
+        <a class="btn btn-secondary" href="{{ path("program_show", { slug: program.slug }) }}">
+            {{ 'nav.programs_show_back'|trans }} {{ program.title }}
         </a>
     </p>
     <p>
-        <a href="{{ path('program_index') }}">
-            Retour à la liste des programmes
+        <a class="btn btn-primary" href="{{ path('program_index') }}">
+            {{ 'nav.programs_back'|trans }}
         </a>
     </p>
 {% endblock %}

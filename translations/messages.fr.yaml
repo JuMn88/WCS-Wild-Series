@@ -6,7 +6,10 @@ nav.index_back: 'Retour à l''accueil'
 nav.categories: Catégories
 nav.categories_back: 'Retour aux Catégories'
 nav.programs: Programmes
+nav.programs_back: 'Retour à la liste des programmes'
 nav.programs_show: 'Voir la fiche'
+nav.programs_show_back: 'Retour à la série'
+nav.programs_season_back: 'Retour à la saison'
 nav.episodes: Épisodes
 nav.episode_back: 'Retour vers Épisodes'
 nav.casting: Casting
@@ -21,6 +24,7 @@ nav.new: Ajouter
 nav.delete: Supprimer
 nav.post: Poster
 nav.email_go: 'Aller voir !'
+nav.submit: Envoyer
 img.logo_alt: 'logo du site représentant une télévision'
 img.poster_alt: 'Affiche de la série %title%'
 index.title: 'Bienvenue !'
@@ -40,10 +44,14 @@ categories.index_title: 'Toutes les catégories de séries'
 categories.index_subtitle: Catégorie
 categories.new: 'Ajouter une catégorie'
 categories.show_title: 'Les dernières séries de la catégorie %categoryname%'
+comment.index_title: 'Commentaires :'
+comment.new_title: 'Ajouter un commentaire :'
+comment.author: 'Auteur :'
 comment.rate: 'Note :'
 comment.comment: 'Commentaire :'
 comment.comment_placeholder: 'Qu''avez-vous pensé de cet épisode ?'
 comment.delete_onsubmit: 'return confirm(''Êtes-vous sûr(e) de vouloir supprimer ce commentaire ?'');'
+comment.no_records: 'Il n''y a aucun commentaire pour cet épisode. Envie de donner votre avis ?'
 email.episode: 'Nouvel épisode'
 email.episode_title: 'Nouvel épisode %episodetitle% ajouté !'
 email.episode_content: 'Bonjour, un nouvel épisode de la série %programtitle% a été ajouté sur Wild Séries ! Il s''agit de l''épisode n°%episodenumber% et s''intitule %episodetitle%.'
@@ -66,3 +74,25 @@ episodes.summary_label: 'Résumé :'
 episodes.summary_placeholder: 'De quoi parle cet épisode ?'
 episodes.edit: 'Modifier la fiche épisode'
 episodes.edit_title: 'Modifier la fiche de : '
+programs.index_title: 'Toutes les séries'
+programs.search_label: 'Recherche :'
+programs.search_placeholder: 'Saisir le titre du programme'
+programs.season: Saison
+programs.casting: 'Casting :'
+programs.year: 'Année :'
+programs.episode: Épisode
+programs.episode_acronym: S%seasonnumber%E%episodenumber%
+programs.new: 'Ajouter une série'
+programs.new_title: 'Ajouter une série'
+programs.title_label: 'Titre :'
+programs.title_placeholder: 'Entrez le titre de la série'
+programs.category_label: 'Catégorie :'
+programs.poster_label: 'Affiche :'
+programs.poster_placeholder: 'Entrez l''url de l''affiche'
+programs.country_label: 'Pays :'
+programs.year_label: 'Année :'
+programs.summary_label: 'Résumé :'
+programs.summary_placeholder: 'De quoi parle cette série ?'
+programs.actors_label: 'Casting :'
+programs.edit: 'Modifier la fiche série'
+programs.edit_title: 'Modifier la fiche de : '

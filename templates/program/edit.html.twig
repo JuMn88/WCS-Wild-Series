@@ -1,11 +1,11 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Éditer Programme{% endblock %}
+{% block title %}{{ program.title }} - {{ 'programs.edit'|trans }} - {{ parent() }}{% endblock %}
 
 {% block body %}
-    <h1>Éditer Programme</h1>
+    <h1>{{ 'programs.edit_title'|trans }}{{ program.title }}</h1>
 
-    {{ include('program/_form.html.twig', {'button_label': 'Actualiser'}) }}
+    {{ include('program/_form.html.twig', {'button_label': 'nav.edit'|trans}) }}
 
-    <a href="{{ path('program_index') }}">Retour à la liste</a>
+    <a class="btn btn-primary" href="{{ path('program_index') }}">{{ 'nav.programs_back'|trans }}</a>
 {% endblock %}
