@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Inscription{% endblock %}
+{% block title %}{{ 'nav.registration'|trans }} - {{ parent() }}{% endblock %}
 
 {% block body %}
     <div class='container border border-light rounded shadow-lg mt-sm-5 px-sm-5 px-4'>
@@ -9,33 +9,41 @@
                 <div class="alert alert-danger" role="alert">{{ flashError }}</div>
             {% endfor %}
 
-            <h2 class="my-3 font-weight-normal text-center">Inscription</h2>
+            <h2 class="my-3 font-weight-normal text-center">
+                {{ 'account.registration_title'|trans }}
+            </h2>
 
             {{ form_start(registrationForm) }}
                 <div class="mb-3">
-                    {{ form_row(registrationForm.username, {
-                        label: 'Pseudonyme',
-                        attr: {class: 'form-control'}
-                    }) }}
+                    {{ form_label(registrationForm.username, 'account.username_label'|trans) }}
+                    {{ form_widget(registrationForm.username, {'attr': {
+                        'placeholder': 'account.username_placeholder'|trans,
+                        class: 'form-control'
+                    }}) }}
                 </div>
                 <div class="mb-3">
-                    {{ form_row(registrationForm.email, {
-                        label: 'Adresse mail',
-                        attr: {class: 'form-control'}
-                    }) }}
+                    {{ form_label(registrationForm.email, 'account.email_label'|trans) }}
+                    {{ form_widget(registrationForm.email, {'attr': {
+                        'placeholder': 'account.email_placeholder'|trans,
+                        class: 'form-control'
+                    }}) }}
                 </div>
                 <div class="mb-3">
-                    {{ form_row(registrationForm.plainPassword, {
-                        label: 'Mot de passe',
-                        attr: {class: 'form-control'}
-                    }) }}
+                    {{ form_label(registrationForm.plainPassword, 'account.plainPassword_label'|trans) }}
+                    {{ form_widget(registrationForm.plainPassword, {'attr': {
+                        'placeholder': 'account.plainPassword_placeholder'|trans,
+                        class: 'form-control'
+                    }}) }}
                 </div>
-                {{ form_row(registrationForm.agreeTerms, {
-                        attr: {class: 'form-check-input mx-2'}
-                    }) }}
+                {{ form_label(registrationForm.agreeTerms, 'account.agreeTerms_label'|trans) }}
+                {{ form_widget(registrationForm.agreeTerms, {'attr': {
+                    class: 'form-check-input mx-2'
+                }}) }}
 
                 <div class='d-flex justify-content-center'>
-                    <button type="submit" class="btn btn-lg btn-primary mb-3">Inscription</button>
+                    <button type="submit" class="btn btn-lg btn-primary mb-3">
+                        {{ 'account.registration_btn'|trans }}
+                    </button>
                 </div>
             {{ form_end(registrationForm) }}
         </form>

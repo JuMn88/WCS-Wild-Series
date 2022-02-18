@@ -27,6 +27,9 @@ nav.email_go: 'Aller voir !'
 nav.submit: Envoyer
 nav.seasons: Saisons
 nav.seasons_back: 'Retour à la liste des saisons'
+nav.login: Connexion
+nav.profile: 'Mon Profil'
+nav.registration: Inscription
 img.logo_alt: 'logo du site représentant une télévision'
 img.poster_alt: 'Affiche de la série %title%'
 index.title: 'Bienvenue !'
@@ -61,6 +64,9 @@ email.program: 'Nouvelle série'
 email.program_title: 'Nouvel série %programtitle% ajoutée !'
 email.program_content: 'Bonjour, une nouvelle série %programtitle% a été ajoutée sur Wild Séries !'
 email.program_summary: 'Résumé : %programsummary%'
+email.confirmation_title: 'Bonjour ! Merci de confirmer votre adresse email !'
+email.confirmation_content: 'Merci de confirmer votre adresse email en cliquant sur le lien ci-dessous. <br>Ce lien expirera dans %expiresAtMessageKey%. <br><br>Bonne journée !'
+email.confirmation_link: Confirmer
 episodes.index_title: 'Tous les épisodes de séries'
 episodes.title: Titre
 episodes.number: Numéro
@@ -112,3 +118,21 @@ seasons.description_label: 'Description :'
 seasons.description_placeholder: 'De quoi parle cette saison ?'
 seasons.edit: 'Modifier la fiche saison'
 seasons.edit_title: 'Modifier la fiche de : '
+account.logged_as: 'Vous êtes connecté en tant que %username%, '
+account.login_title: Connexion
+account.email: 'Adresse mail'
+account.password_label: 'Mot de passe'
+account.login_btn: Connexion
+account.subscribe: 'Pas encore inscrit ? C''est '
+account.subscribe_link: 'par ici !'
+account.profile_title: 'Mon Profil :'
+account.email_label: 'Adresse mail :'
+account.bio_label: 'Bio :'
+account.registration_title: Inscription
+account.username_label: 'Pseudonyme :'
+account.username_placeholder: 'Entrez votre pseudonyme'
+account.email_placeholder: 'Entrez votre adresse email'
+account.plainPassword_label: 'Mot de passe :'
+account.plainPassword_placeholder: 'Entrez votre mot de passe'
+account.registration_btn: 'S''inscrire'
+account.agreeTerms_label: 'J''accepte les termes'

@@ -27,6 +27,9 @@ nav.email_go: 'Go checkit out!'
 nav.submit: Submit
 nav.seasons: Seasons
 nav.seasons_back: 'Back to Seasons'
+nav.login: Login
+nav.profile: 'My Profile'
+nav.registration: Registration
 img.logo_alt: 'website''s logo in the shape of a TV'
 img.poster_alt: '%title%''s poster'
 index.title: Welcome!
@@ -61,6 +64,9 @@ email.program: 'New program'
 email.program_title: 'New program %programtitle% added!'
 email.program_content: 'Hello, a new tv show %programtitle% has been added to Wild Series!'
 email.program_summary: 'Synopsis : %programsummary%'
+email.confirmation_title: 'Hello! Please confirm your email address !'
+email.confirmation_content: 'Please confirm your email address by clicking on the link below. This link will ewpire in %expiresAtMessageKey%. Have a nice day!'
+email.confirmation_link: Confirm
 episodes.index_title: 'Every episode'
 episodes.title: Title
 episodes.number: Number
@@ -112,3 +118,21 @@ seasons.description_label: 'Description:'
 seasons.description_placeholder: 'What is this season about?'
 seasons.edit: 'Update season''s details'
 seasons.edit_title: 'Update details of: '
+account.logged_as: 'You are logged as %username%, '
+account.login_title: Login
+account.email: Email
+account.password_label: Password
+account.login_btn: Login
+account.subscribe: 'Not subscribed yet? It''s '
+account.subscribe_link: 'this way!'
+account.profile_title: 'My Profile:'
+account.email_label: 'Email:'
+account.bio_label: 'Bio:'
+account.registration_title: Registration
+account.username_label: 'Username:'
+account.username_placeholder: 'Type in your username'
+account.email_placeholder: 'Type in your email'
+account.plainPassword_label: 'Password:'
+account.plainPassword_placeholder: 'Type in your password'
+account.registration_btn: Register
+account.agreeTerms_label: Agree terms

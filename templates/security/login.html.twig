@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Connexion{% endblock %}
+{% block title %}{{ 'nav.login'|trans }} - {{ parent() }}{% endblock %}
 
 {% block body %}
 <div class='container border border-light rounded shadow-lg mt-sm-5 px-sm-5 px-4'>
@@ -11,17 +11,26 @@
 
         {% if app.user %}
             <div class="mb-3">
-                Vous êtes connecté en tant que {{ app.user.username }}, <a href="{{ path('app_logout') }}">Logout</a>
+                {% trans with {'%username%': app.user.username} %}
+                    account.logged_as
+                {% endtrans %}
+                <a href="{{ path('app_logout') }}">{{ 'account.logout'|trans }}</a>
             </div>
         {% endif %}
 
-        <h2 class="my-3 font-weight-normal text-center">Connexion</h2>
+        <h2 class="my-3 font-weight-normal text-center">
+            {{ 'account.login_title'|trans }}
+        </h2>
         <div class="mb-3">
-            <label for="inputEmail">Adresse mail</label>
+            <label for="inputEmail">
+                {{ 'account.email'|trans }}
+            </label>
             <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" autocomplete="email" required autofocus>
         </div>
         <div class="mb-3">
-            <label for="inputPassword">Mot de passe</label>
+            <label for="inputPassword">
+                {{ 'account.password_label'|trans }}
+            </label>
             <input type="password" name="password" id="inputPassword" class="form-control" autocomplete="current-password" required>
         </div>
         <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
@@ -39,12 +48,12 @@
 
         <div class='d-flex justify-content-center'>
             <button class="btn btn-lg btn-primary mb-3" type="submit">
-                Connexion
+                {{ 'account.login_btn'|trans }}
             </button>
         </div>
         <div class="mb-3 text-center">
             <span class="form-text">
-                Pas encore inscrit ? C'est <a href="{{ path('app_register') }}">par ici !</a>
+                {{ 'account.subscribe'|trans }}<a href="{{ path('app_register') }}">{{ 'account.subscribe_link'|trans }}</a>
             </span>
         </div>
     </form>

@@ -1,22 +1,22 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Mon Profil{% endblock %}
+{% block title %}{{ 'nav.profile'|trans }} - {{ parent() }}{% endblock %}
 
 {% block body %}
-    <h2>Mon profil :</h2>
+    <h2>{{ 'account.profile_title'|trans }}</h2>
     <div class='container border border-light rounded shadow-lg mt-sm-5 px-sm-5 px-4'>
         <table class="table table-borderless table-hover">
             <tbody>
                 <tr>
-                    <th>Pseudonyme :</th>
+                    <th>{{ 'account.username_label'|trans }}</th>
                     <th>{{ app.user.username }}</th>
                 </tr>
                 <tr>
-                    <th>Adresse mail :</th>
+                    <th>{{ 'account._label'|trans }}</th>
                     <th>{{ app.user.email }}</th>
                 </tr>
                 <tr>
-                    <th>Bio :</th>
+                    <th>{{ 'account.bio_label'|trans }}</th>
                     <th>{{ app.user.bio }}</th>
                 </tr>
             </tbody>
