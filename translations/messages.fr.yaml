@@ -25,6 +25,8 @@ nav.delete: Supprimer
 nav.post: Poster
 nav.email_go: 'Aller voir !'
 nav.submit: Envoyer
+nav.seasons: Saisons
+nav.seasons_back: 'Retour à la liste des saisons'
 img.logo_alt: 'logo du site représentant une télévision'
 img.poster_alt: 'Affiche de la série %title%'
 index.title: 'Bienvenue !'
@@ -96,3 +98,17 @@ programs.summary_placeholder: 'De quoi parle cette série ?'
 programs.actors_label: 'Casting :'
 programs.edit: 'Modifier la fiche série'
 programs.edit_title: 'Modifier la fiche de : '
+seasons.index_title: 'Toutes les saisons'
+seasons.number: Numéro
+seasons.year: Année
+seasons.description: Description
+seasons.delete_onsubmit: 'return confirm(''Êtes-vous sûr(e) de vouloir supprimer cette saison ?'');'
+seasons.new: 'Ajouter une saison'
+seasons.new_title: 'Ajouter une saison'
+seasons.program_label: 'Série :'
+seasons.number_label: 'Numéro :'
+seasons.year_label: 'Année :'
+seasons.description_label: 'Description :'
+seasons.description_placeholder: 'De quoi parle cette saison ?'
+seasons.edit: 'Modifier la fiche saison'
+seasons.edit_title: 'Modifier la fiche de : '

@@ -25,6 +25,8 @@ nav.delete: Delete
 nav.post: Post
 nav.email_go: 'Go checkit out!'
 nav.submit: Submit
+nav.seasons: Seasons
+nav.seasons_back: 'Back to Seasons'
 img.logo_alt: 'website''s logo in the shape of a TV'
 img.poster_alt: '%title%''s poster'
 index.title: Welcome!
@@ -96,3 +98,17 @@ programs.summary_placeholder: 'What is this show about?'
 programs.actors_label: 'Casting:'
 programs.edit: 'Update program''s details'
 programs.edit_title: 'Update details of: '
+seasons.index_title: 'Every season'
+seasons.number: Number
+seasons.year: Year
+seasons.description: Description
+seasons.delete_onsubmit: 'return confirm(''Are you sure you want to delete this season?'');'
+seasons.new: 'Add a season'
+seasons.new_title: 'Add a season'
+seasons.program_label: 'Program:'
+seasons.number_label: 'Number:'
+seasons.year_label: 'Year:'
+seasons.description_label: 'Description:'
+seasons.description_placeholder: 'What is this season about?'
+seasons.edit: 'Update season''s details'
+seasons.edit_title: 'Update details of: '
