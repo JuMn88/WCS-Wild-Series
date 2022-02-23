@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Repository\ProgramRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -21,5 +22,22 @@ class DefaultController extends AbstractController
                 3
             )
         ]);
+    }
+
+    /**
+     * @Route("/change-locale/{locale}", name="app_change_locale")
+     */
+    public function ChangeLocale(Request $request, string $locale): Response
+    {
+        //setting the new language according to user's choice
+        $request->getSession()->set('_locale', $locale);
+        
+        //updating the url with the proper prefix
+        $urlOrigin = $urlDestination = '';
+        $pattern = '/\/fr\/|\/en\//'; //setting the pattern corresponding to the url prefixes (i.e. the languages available on the website)
+        $urlOrigin = $request->headers->get('referer'); //where the user is coming from
+        $urlDestination = preg_replace($pattern, '/' . $locale . '/', $urlOrigin); //replacing the prefix of the url
+
+        return $this->redirect($urlDestination);
     }
 }

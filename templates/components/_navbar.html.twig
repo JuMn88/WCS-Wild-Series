@@ -8,6 +8,15 @@
     <a class="nav-link text-light" href="{{ path('program_index') }}">{{ 'nav.programs'|trans }}</a>
     <a class="nav-link text-light" href="{{ path('episode_index') }}">{{ 'nav.episodes'|trans }}</a>
     <a class="nav-link text-light" href="{{ path('actor_index') }}">{{ 'nav.casting'|trans }}</a>
+    <div class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle text-light" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+        <i class="bi bi-globe"></i> {{ app.request.locale|language_name|capitalize }}
+      </a>
+      <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+        <li><a class="dropdown-item" href="{{ path('app_change_locale', { locale: 'fr' }) }}">🇫🇷 - {{ 'fr'|language_name|capitalize }}</a></li>
+        <li><a class="dropdown-item" href="{{ path('app_change_locale', { locale: 'en' }) }}">🇬🇧 - {{ 'en'|language_name|capitalize }}</a></li>
+      </ul>
+    </div>
     {% if app.user %}
       <a class="nav-link text-light" href="{{ path('app_profile') }}">
         {% trans with {'%username%': app.user.username} %}
