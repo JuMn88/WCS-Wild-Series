@@ -4,7 +4,16 @@
   <a class="navbar-brand mx-2" href="{{ path('app_index') }}">{{ 'nav.index'|trans }}</a>
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <a class="nav-link text-light" href="{{ path('category_index') }}">{{ 'nav.categories'|trans }}</a>
+    <div class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle text-light" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+        {{ 'nav.categories'|trans }}
+      </a>
+      <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+        <a class="dropdown-item" href="{{ path('category_index') }}">{{ 'categories.index_title'|trans }}</a>
+        <li><hr class="dropdown-divider"></li>
+        {{ render(controller('App\\Controller\\DefaultController::navbarTop')) }}
+      </ul>
+    </div>
     <a class="nav-link text-light" href="{{ path('program_index') }}">{{ 'nav.programs'|trans }}</a>
     <a class="nav-link text-light" href="{{ path('episode_index') }}">{{ 'nav.episodes'|trans }}</a>
     <a class="nav-link text-light" href="{{ path('actor_index') }}">{{ 'nav.casting'|trans }}</a>
